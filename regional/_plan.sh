@@ -3,8 +3,6 @@
 if [ -z ${ENVIRONMENT} ]; then echo 'Please set ENVIRONMENT' && exit 1; fi
 if [ -z ${REGION} ]; then echo "Please set REGION" && exit 1; fi
 
-PROJECT=resume-points
-
 rm -rf .terraform
 
 terraform init \

@@ -3,10 +3,13 @@
 if [ -z ${ENVIRONMENT} ]; then echo 'Please set ENVIRONMENT' && exit 1; fi
 if [ -z ${REGION} ]; then echo "Please set REGION" && exit 1; fi
 
+# For the sake of simplicity, get the service name by getting the folder name
+SERVICE=${PWD##*/}
+
 rm -rf .terraform
 
 terraform init \
-    -backend-config="key=${ENVIRONMENT}/${REGION}/pixel/terraform.tfstate" \
+    -backend-config="key=${ENVIRONMENT}/${REGION}/pixel/${SERVICE}/terraform.tfstate" \
     -backend-config="bucket=pixell" && \
 
 terraform plan -destroy \
